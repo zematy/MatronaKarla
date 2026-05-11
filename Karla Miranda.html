@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Karla Miranda · Matrona & Servicios de Consulta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --white:#FFFFFF;
+    --aqua:#84DCC6;
+    --aqua-light:#A5FFD6;
+    --blush:#FFA69E;
+    --pink:#FF686B;
+    --pink-dark:#e55659;
+    --ink:#243830;
+    --ink-soft:#3a544a;
+    --muted:#7a8c84;
+    --cream:#fdfbf7;
+    --line:rgba(36,56,48,0.08);
+    --shadow-sm: 0 2px 8px rgba(36,56,48,.06);
+    --shadow-md: 0 8px 28px rgba(36,56,48,.08);
+    --shadow-lg: 0 18px 50px rgba(36,56,48,.12);
+    --r-sm:10px;
+    --r:16px;
+    --r-lg:24px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--ink);line-height:1.15;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+  .container{max-width:1200px;margin:0 auto;padding:0 24px}
+  .italic{font-style:italic;color:var(--aqua);font-weight:500}
+
+  /* ---------- NAVBAR ---------- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+    transition:padding .25s ease;
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1280px;margin:0 auto;gap:24px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand-mark{width:42px;height:42px;flex-shrink:0}
+  .brand-text{display:flex;flex-direction:column;line-height:1}
+  .brand-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;letter-spacing:.04em}
+  .brand-sub{font-size:10px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;margin-top:3px;font-weight:500}
+  .nav-links{display:flex;align-items:center;gap:32px}
+  .nav-links a{font-size:14px;color:var(--ink-soft);font-weight:500;position:relative;transition:color .2s}
+  .nav-links a:hover{color:var(--pink)}
+  .nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--pink);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+  .nav-links a:hover::after{transform:scaleX(1)}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 22px;border-radius:999px;
+    font-size:14px;font-weight:600;font-family:inherit;
+    cursor:pointer;border:1.5px solid transparent;
+    transition:all .22s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--pink);color:#fff;box-shadow:0 6px 16px rgba(255,104,107,.28)}
+  .btn-primary:hover{background:var(--pink-dark);transform:translateY(-1px);box-shadow:0 10px 22px rgba(255,104,107,.36)}
+  .btn-outline{background:transparent;color:var(--ink);border-color:var(--ink)}
+  .btn-outline:hover{background:var(--ink);color:#fff}
+  .btn-ghost{background:rgba(132,220,198,.18);color:var(--ink)}
+  .btn-ghost:hover{background:rgba(132,220,198,.32)}
+  .nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:8px}
+  .nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;transition:.25s;border-radius:2px}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:140px 0 90px;
+    background:
+      radial-gradient(ellipse 60% 50% at 90% 10%, rgba(165,255,214,.45), transparent 60%),
+      radial-gradient(ellipse 50% 40% at 5% 80%, rgba(255,166,158,.32), transparent 60%),
+      var(--white);
+    overflow:hidden;
+    position:relative;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:7px 14px;border-radius:999px;
+    background:rgba(132,220,198,.22);
+    color:var(--ink);
+    font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    margin-bottom:24px;
+    border:1px solid rgba(132,220,198,.5);
+  }
+  .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--aqua);box-shadow:0 0 0 4px rgba(132,220,198,.3)}
+  .hero h1{
+    font-size:clamp(42px,5.4vw,76px);
+    margin-bottom:24px;
+    font-weight:500;
+  }
+  .hero h1 em{font-style:italic;color:#5cc2a8;font-weight:500}
+  .hero-sub{
+    font-size:18px;color:var(--ink-soft);max-width:540px;margin-bottom:36px;
+  }
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:40px}
+  .pills{display:flex;flex-wrap:wrap;gap:10px}
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:8px 14px;border-radius:999px;
+    background:#fff;border:1px solid var(--line);
+    font-size:13px;color:var(--ink-soft);font-weight:600;
+    box-shadow:var(--shadow-sm);
+  }
+  .pill svg{width:14px;height:14px;color:var(--aqua)}
+
+  /* logo illustration */
+  .hero-art{
+    position:relative;display:flex;align-items:center;justify-content:center;
+    aspect-ratio:1/1;max-width:520px;margin-left:auto;
+    animation:floaty 7s ease-in-out infinite;
+  }
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  .hero-art::before{
+    content:"";position:absolute;inset:6%;border-radius:50%;
+    background:radial-gradient(circle, rgba(165,255,214,.4), rgba(255,255,255,0) 70%);
+    z-index:0;
+  }
+  .hero-art svg{position:relative;z-index:1;width:100%;height:100%}
+
+  /* ---------- STATS BAR ---------- */
+  .stats{background:var(--ink);color:#fff;padding:38px 0}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+  .stat .label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--aqua);font-weight:700;margin-bottom:6px}
+  .stat .value{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:#fff}
+  .stat-divider{width:1px;background:rgba(255,255,255,.12)}
+
+  /* ---------- SECTION ---------- */
+  section{padding:100px 0}
+  .section-head{text-align:center;max-width:680px;margin:0 auto 56px}
+  .section-eyebrow{
+    display:inline-block;padding:6px 14px;border-radius:999px;
+    background:rgba(255,166,158,.2);color:var(--pink-dark);
+    font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  .section-head h2{font-size:clamp(34px,4.2vw,52px);margin-bottom:14px;font-weight:500}
+  .section-head h2 em{font-style:italic;color:#5cc2a8}
+  .section-head p{color:var(--ink-soft);font-size:17px}
+
+  /* ---------- SOBRE MI ---------- */
+  .about{background:linear-gradient(180deg, #fff 0%, var(--cream) 100%)}
+  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
+  .about-card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);
+    padding:32px;box-shadow:var(--shadow-md);
+    position:sticky;top:100px;
+  }
+  .about-card .avatar{
+    width:100%;aspect-ratio:1/1;border-radius:18px;
+    background:
+      linear-gradient(135deg, rgba(132,220,198,.5), rgba(255,166,158,.4)),
+      repeating-linear-gradient(45deg, transparent 0 10px, rgba(36,56,48,.05) 10px 11px);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:22px;position:relative;overflow:hidden;
+  }
+  .avatar-initials{
+    font-family:'Cormorant Garamond',serif;font-size:88px;color:#fff;font-style:italic;
+    text-shadow:0 4px 20px rgba(36,56,48,.18);
+  }
+  .avatar-label{
+    position:absolute;bottom:14px;left:14px;right:14px;
+    font-family:monospace;font-size:10px;color:var(--ink-soft);
+    background:rgba(255,255,255,.85);padding:4px 8px;border-radius:6px;
+    text-align:center;letter-spacing:.05em;
+  }
+  .about-card h3{font-size:26px;margin-bottom:4px}
+  .about-card .role{color:var(--muted);font-size:14px;margin-bottom:18px}
+  .contact-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:14px;color:var(--ink-soft)}
+  .contact-row:first-of-type{border-top:0}
+  .contact-row svg{width:16px;height:16px;color:var(--aqua);flex-shrink:0}
+  .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .badge{
+    font-size:11px;padding:6px 10px;border-radius:8px;
+    background:rgba(132,220,198,.2);color:var(--ink);font-weight:600;
+    border:1px solid rgba(132,220,198,.4);
+  }
+  .badge.warm{background:rgba(255,166,158,.18);border-color:rgba(255,166,158,.4);color:var(--pink-dark)}
+
+  .about-body h3{font-size:32px;margin-bottom:18px;font-weight:500}
+  .about-body p{color:var(--ink-soft);font-size:16px;margin-bottom:18px}
+  .about-tabs{display:flex;gap:8px;margin:32px 0 20px;flex-wrap:wrap}
+  .tab{
+    padding:9px 16px;border-radius:999px;background:#fff;border:1px solid var(--line);
+    font-size:13px;font-weight:600;color:var(--ink-soft);cursor:pointer;font-family:inherit;
+    transition:all .2s;
+  }
+  .tab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .tab:not(.active):hover{border-color:var(--aqua);color:var(--ink)}
+  .timeline{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .tline{
+    background:#fff;border:1px solid var(--line);border-radius:var(--r);
+    padding:18px;transition:all .25s;
+  }
+  .tline:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:rgba(132,220,198,.6)}
+  .tline .year{font-size:11px;font-weight:700;letter-spacing:.15em;color:var(--pink);text-transform:uppercase}
+  .tline .title{font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--ink);margin-top:4px;font-weight:600}
+  .tline .place{font-size:13px;color:var(--muted);margin-top:4px}
+
+  /* ---------- ESPECIALIDADES ---------- */
+  .specs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .spec{
+    background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);
+    padding:32px 28px;
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    position:relative;overflow:hidden;
+  }
+  .spec::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:4px;
+    background:linear-gradient(90deg, var(--aqua), var(--aqua-light));
+    transform:scaleX(0);transform-origin:left;transition:transform .35s ease;
+  }
+  .spec:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:rgba(132,220,198,.6)}
+  .spec:hover::before{transform:scaleX(1)}
+  .spec-icon{
+    width:56px;height:56px;border-radius:16px;
+    background:rgba(132,220,198,.18);
+    display:flex;align-items:center;justify-content:center;
+    color:#3fa489;margin-bottom:18px;
+    transition:transform .3s;
+  }
+  .spec:hover .spec-icon{transform:rotate(-6deg) scale(1.05)}
+  .spec:nth-child(even) .spec-icon{background:rgba(255,166,158,.22);color:var(--pink-dark)}
+  .spec h3{font-size:24px;margin-bottom:10px;font-weight:600}
+  .spec p{color:var(--ink-soft);font-size:14.5px}
+  .spec-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+  .spec-tag{font-size:11px;padding:4px 9px;border-radius:6px;background:var(--cream);color:var(--ink-soft);font-weight:600}
+
+  /* ---------- SERVICIOS ---------- */
+  .servicios{background:var(--cream)}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .svc{
+    background:#fff;border-radius:var(--r-lg);border:1px solid var(--line);
+    padding:28px;display:flex;flex-direction:column;
+    transition:transform .3s, box-shadow .3s;position:relative;
+  }
+  .svc:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+  .svc.featured{
+    background:linear-gradient(180deg, var(--ink) 0%, #1b2a24 100%);
+    color:#fff;border-color:var(--ink);
+  }
+  .svc.featured h3,.svc.featured .price{color:#fff}
+  .svc.featured .svc-includes li{color:rgba(255,255,255,.86)}
+  .featured-tag{
+    position:absolute;top:-12px;left:24px;
+    background:var(--pink);color:#fff;
+    padding:6px 14px;border-radius:999px;
+    font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    box-shadow:0 4px 14px rgba(255,104,107,.4);
+  }
+  .svc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px}
+  .svc h3{font-size:22px;font-weight:600;flex:1}
+  .svc-icon{
+    width:40px;height:40px;border-radius:10px;
+    background:rgba(132,220,198,.2);color:#3fa489;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .svc.featured .svc-icon{background:rgba(165,255,214,.18);color:var(--aqua-light)}
+  .svc-desc{font-size:14px;color:var(--muted);margin-bottom:20px}
+  .svc.featured .svc-desc{color:rgba(255,255,255,.65)}
+  .price{
+    font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;
+    color:var(--ink);margin-bottom:4px;line-height:1;
+  }
+  .price .currency{font-size:18px;color:var(--muted);font-weight:500}
+  .svc.featured .price .currency{color:rgba(255,255,255,.6)}
+  .price-note{font-size:12px;color:var(--muted);margin-bottom:18px;font-weight:600;letter-spacing:.04em}
+  .svc.featured .price-note{color:var(--aqua-light)}
+  .svc-includes{list-style:none;margin-bottom:22px;flex:1}
+  .svc-includes li{
+    font-size:14px;color:var(--ink-soft);padding:6px 0 6px 24px;position:relative;
+  }
+  .svc-includes li::before{
+    content:"";position:absolute;left:0;top:11px;width:14px;height:8px;
+    border-left:2px solid var(--aqua);border-bottom:2px solid var(--aqua);
+    transform:rotate(-45deg);
+  }
+  .svc.featured .svc-includes li::before{border-color:var(--aqua-light)}
+  .svc .btn{align-self:stretch;justify-content:center}
+  .svc-refund{
+    font-size:11px;color:var(--muted);
+    border-top:1px dashed var(--line);padding-top:12px;margin-top:14px;
+  }
+  .svc.featured .svc-refund{color:rgba(255,255,255,.55);border-top-color:rgba(255,255,255,.15)}
+
+  .fonasa-banner{
+    margin-top:40px;border-radius:var(--r-lg);
+    background:linear-gradient(120deg, rgba(132,220,198,.25), rgba(255,166,158,.22));
+    border:1px solid rgba(132,220,198,.4);
+    padding:30px;display:flex;align-items:center;gap:24px;
+  }
+  .fonasa-banner .icon{
+    width:60px;height:60px;border-radius:16px;background:#fff;
+    display:flex;align-items:center;justify-content:center;color:var(--ink);flex-shrink:0;
+    box-shadow:var(--shadow-sm);
+  }
+  .fonasa-banner h4{font-size:22px;margin-bottom:4px;font-weight:600}
+  .fonasa-banner p{font-size:14px;color:var(--ink-soft)}
+
+  /* ---------- AGENDAR ---------- */
+  .agendar{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+  .agendar::before{
+    content:"";position:absolute;top:-100px;right:-100px;width:400px;height:400px;
+    border-radius:50%;background:radial-gradient(circle, rgba(132,220,198,.18), transparent 60%);
+  }
+  .agendar::after{
+    content:"";position:absolute;bottom:-150px;left:-100px;width:500px;height:500px;
+    border-radius:50%;background:radial-gradient(circle, rgba(255,166,158,.12), transparent 60%);
+  }
+  .agendar .section-head h2{color:#fff}
+  .agendar .section-head h2 em{color:var(--aqua-light)}
+  .agendar .section-head p{color:rgba(255,255,255,.7)}
+  .agendar .section-eyebrow{background:rgba(132,220,198,.18);color:var(--aqua-light)}
+  .agendar-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;position:relative;z-index:2;align-items:start}
+  .steps{display:flex;flex-direction:column;gap:24px}
+  .step{
+    display:flex;gap:20px;padding:24px;border-radius:var(--r);
+    background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+    transition:all .25s;
+  }
+  .step:hover{background:rgba(255,255,255,.08);border-color:rgba(132,220,198,.3)}
+  .step-num{
+    width:48px;height:48px;border-radius:50%;
+    background:var(--aqua);color:var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;
+    flex-shrink:0;
+  }
+  .step:nth-child(2) .step-num{background:var(--blush)}
+  .step:nth-child(3) .step-num{background:var(--pink);color:#fff}
+  .step h4{font-size:22px;color:#fff;margin-bottom:4px;font-weight:600}
+  .step p{font-size:14px;color:rgba(255,255,255,.7)}
+  .calendly-wrap{
+    background:#fff;border-radius:var(--r-lg);padding:18px;overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.3);
+  }
+  .calendly-inline-widget{min-width:320px;height:620px}
+  .calendly-fallback{
+    height:620px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    background:repeating-linear-gradient(45deg, var(--cream) 0 12px, #f6f1e9 12px 13px);
+    border-radius:var(--r);text-align:center;padding:40px;color:var(--ink-soft);
+  }
+  .calendly-fallback h4{color:var(--ink);font-size:24px;margin-bottom:8px}
+  .calendly-fallback code{
+    font-family:monospace;font-size:11px;background:#fff;padding:8px 12px;
+    border-radius:6px;display:inline-block;margin-top:16px;border:1px dashed var(--muted);
+    color:var(--ink);
+  }
+
+  /* ---------- CONTACTO ---------- */
+  .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
+  .contact-info h3{font-size:32px;margin-bottom:14px;font-weight:500}
+  .contact-info p{color:var(--ink-soft);margin-bottom:28px}
+  .info-block{display:flex;gap:14px;padding:18px;border-radius:var(--r);background:var(--cream);margin-bottom:12px;transition:all .25s}
+  .info-block:hover{background:#fff;box-shadow:var(--shadow-md)}
+  .info-block .ic{
+    width:44px;height:44px;border-radius:12px;background:#fff;
+    display:flex;align-items:center;justify-content:center;color:var(--aqua);
+    flex-shrink:0;box-shadow:var(--shadow-sm);
+  }
+  .info-block .lab{font-size:12px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+  .info-block .val{font-size:15px;color:var(--ink);font-weight:600;margin-top:2px}
+
+  form{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:32px;box-shadow:var(--shadow-md)}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .field{margin-bottom:16px}
+  .field.full{grid-column:1/-1}
+  label{display:block;font-size:13px;font-weight:600;color:var(--ink-soft);margin-bottom:6px}
+  input,select,textarea{
+    width:100%;padding:13px 16px;border:1px solid var(--line);border-radius:12px;
+    font-family:inherit;font-size:14.5px;color:var(--ink);background:#fff;
+    transition:border-color .2s, box-shadow .2s;
+  }
+  input:focus,select:focus,textarea:focus{
+    outline:none;border-color:var(--aqua);box-shadow:0 0 0 4px rgba(132,220,198,.18);
+  }
+  textarea{resize:vertical;min-height:110px}
+  .form-submit{margin-top:6px;width:100%;justify-content:center}
+  .form-note{font-size:12px;color:var(--muted);text-align:center;margin-top:14px}
+  .form-success{
+    background:rgba(132,220,198,.2);border:1px solid var(--aqua);
+    color:var(--ink);padding:14px;border-radius:12px;text-align:center;
+    font-weight:600;margin-bottom:16px;display:none;
+  }
+  .form-success.show{display:block}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:rgba(255,255,255,.7);padding:70px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;margin-bottom:50px}
+  footer .brand-name,footer h5{color:#fff}
+  footer .brand-sub{color:rgba(255,255,255,.5)}
+  footer p{font-size:14px;line-height:1.7;margin-top:14px;max-width:280px}
+  footer h5{font-family:'Cormorant Garamond',serif;font-size:18px;margin-bottom:18px;font-weight:600}
+  footer ul{list-style:none}
+  footer ul li{margin-bottom:10px}
+  footer ul a{font-size:14px;transition:color .2s}
+  footer ul a:hover{color:var(--aqua-light)}
+  .foot-bottom{
+    border-top:1px solid rgba(255,255,255,.1);
+    padding-top:24px;display:flex;justify-content:space-between;align-items:center;
+    flex-wrap:wrap;gap:14px;font-size:13px;
+  }
+  .reg-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:6px 12px;border-radius:8px;
+    background:rgba(132,220,198,.12);color:var(--aqua-light);
+    border:1px solid rgba(132,220,198,.3);
+    font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  }
+
+  /* ---------- WHATSAPP LINK in about card ---------- */
+  .wa-link{
+    display:flex;align-items:center;gap:10px;padding:12px 14px;margin-top:4px;
+    background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.3);
+    border-radius:12px;color:#1a8a3f;font-weight:700;font-size:14px;
+    transition:all .2s;cursor:pointer;
+  }
+  .wa-link:hover{background:rgba(37,211,102,.16);transform:translateY(-1px)}
+  .wa-link svg{width:18px;height:18px;flex-shrink:0}
+
+  /* ---------- ESPECIALIDADES COMPACT ---------- */
+  .especialidades-compact{padding:80px 0}
+  .specs-compact{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:18px 24px;
+  }
+  .spec-c{
+    display:flex;align-items:flex-start;gap:14px;
+    padding:18px;border-radius:var(--r);
+    background:#fff;border:1px solid var(--line);
+    transition:all .25s;
+  }
+  .spec-c:hover{border-color:rgba(132,220,198,.6);box-shadow:var(--shadow-sm);transform:translateY(-2px)}
+  .spec-c-icon{
+    width:44px;height:44px;border-radius:50%;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .spec-c-icon svg{width:22px;height:22px}
+  .spec-c-icon.aqua{background:rgba(132,220,198,.22);color:#3fa489}
+  .spec-c-icon.blush{background:rgba(255,166,158,.22);color:var(--pink-dark)}
+  .spec-c-body h4{
+    font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;
+    color:var(--ink);margin-bottom:4px;line-height:1.25;
+  }
+  .spec-c-body p{font-size:13px;color:var(--ink-soft);line-height:1.4;margin-bottom:8px}
+  .spec-c-body .spec-tags{display:flex;flex-wrap:wrap;gap:4px}
+  .spec-c-body .spec-tag{font-size:10px;padding:2px 7px;border-radius:5px;background:var(--cream);color:var(--ink-soft);font-weight:700;letter-spacing:.02em}
+
+  /* ---------- SERVICIOS ACCORDION ---------- */
+  .svc-accordion{
+    background:#fff;border-radius:var(--r-lg);
+    border:1px solid var(--line);overflow:hidden;
+    box-shadow:var(--shadow-sm);
+  }
+  .acc-row{border-bottom:1px solid var(--line);transition:background .2s}
+  .acc-row:last-child{border-bottom:0}
+  .acc-row.featured{background:rgba(165,255,214,.18)}
+  .acc-row.featured summary:hover{background:rgba(165,255,214,.28)}
+  .acc-row summary{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:20px 26px;cursor:pointer;list-style:none;
+    transition:background .2s;
+  }
+  .acc-row summary::-webkit-details-marker{display:none}
+  .acc-row summary:hover{background:rgba(132,220,198,.08)}
+  .acc-title{
+    font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;
+    color:var(--ink);display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  }
+  .acc-badge{
+    display:inline-block;background:var(--pink);color:#fff;
+    padding:3px 10px;border-radius:999px;
+    font-family:'Nunito',sans-serif;font-size:10px;font-weight:700;
+    letter-spacing:.12em;text-transform:uppercase;
+  }
+  .acc-meta{display:flex;align-items:center;gap:14px;flex-shrink:0}
+  .acc-price{
+    font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;
+    color:var(--ink);white-space:nowrap;
+  }
+  .acc-arrow{
+    width:32px;height:32px;border-radius:50%;
+    background:rgba(132,220,198,.2);color:var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    transition:transform .25s ease;flex-shrink:0;
+  }
+  .acc-arrow svg{width:16px;height:16px}
+  .acc-row[open] .acc-arrow{transform:rotate(180deg);background:var(--pink);color:#fff}
+  .acc-body{
+    padding:0 26px 24px;
+    animation:accFade .3s ease;
+  }
+  @keyframes accFade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .acc-desc{font-size:14.5px;color:var(--ink-soft);margin-bottom:14px}
+  .acc-list{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:8px 18px;margin-bottom:16px}
+  .acc-list li{
+    font-size:13.5px;color:var(--ink-soft);padding-left:20px;position:relative;
+  }
+  .acc-list li::before{
+    content:"";position:absolute;left:0;top:6px;width:12px;height:7px;
+    border-left:2px solid var(--aqua);border-bottom:2px solid var(--aqua);
+    transform:rotate(-45deg);
+  }
+  .acc-foot{
+    display:flex;flex-wrap:wrap;align-items:center;gap:14px;
+    padding-top:14px;border-top:1px dashed var(--line);
+  }
+  .acc-tag{
+    font-size:11px;padding:5px 10px;border-radius:999px;
+    background:rgba(132,220,198,.2);color:var(--ink);font-weight:700;
+    letter-spacing:.06em;text-transform:uppercase;
+  }
+  .acc-refund{font-size:12px;color:var(--muted);flex:1;min-width:160px}
+  .acc-foot .btn{padding:10px 18px}
+
+  /* ---------- AGENDAR HORIZONTAL STEPS ---------- */
+  .steps-h{
+    display:flex;align-items:stretch;justify-content:center;gap:8px;
+    margin-bottom:48px;flex-wrap:nowrap;
+  }
+  .step-h{
+    flex:1;min-width:0;text-align:center;
+    padding:24px 16px;border-radius:var(--r);
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.1);
+    transition:all .25s;
+  }
+  .step-h:hover{background:rgba(255,255,255,.08);border-color:rgba(132,220,198,.4);transform:translateY(-3px)}
+  .step-h-num{
+    width:48px;height:48px;border-radius:50%;
+    background:var(--aqua);color:var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;
+    margin:0 auto 12px;
+  }
+  .step-h:nth-child(3) .step-h-num{background:var(--blush)}
+  .step-h:nth-child(5) .step-h-num{background:var(--pink);color:#fff}
+  .step-h h4{font-size:20px;color:#fff;margin-bottom:4px;font-weight:600}
+  .step-h p{font-size:13px;color:rgba(255,255,255,.7);line-height:1.4}
+  .step-arrow{
+    display:flex;align-items:center;justify-content:center;
+    color:var(--aqua);flex-shrink:0;padding:0 4px;
+    align-self:center;
+  }
+  .step-arrow svg{width:60px;height:18px}
+  .agendar-single{max-width:760px;margin:0 auto}
+
+  /* ---------- REVEAL ANIM ---------- */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease, transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- MOBILE ---------- */
+  @media (max-width: 960px){
+    .nav-links{
+      position:fixed;top:72px;left:0;right:0;background:#fff;
+      flex-direction:column;align-items:stretch;gap:0;padding:8px 0;
+      border-bottom:1px solid var(--line);box-shadow:var(--shadow-md);
+      transform:translateY(-150%);transition:transform .3s ease;
+    }
+    .nav-links.open{transform:translateY(0)}
+    .nav-links a{padding:14px 24px;border-bottom:1px solid var(--line)}
+    .nav-links a::after{display:none}
+    .nav-links .btn{margin:12px 24px;text-align:center;justify-content:center}
+    .nav-toggle{display:block}
+
+    .hero{padding:120px 0 60px}
+    .hero-grid,.about-grid,.contact-grid,.agendar-grid{grid-template-columns:1fr;gap:36px}
+    .specs-compact{grid-template-columns:repeat(2,1fr);gap:14px}
+    .steps-h{flex-direction:column;gap:14px}
+    .step-arrow{transform:rotate(90deg);padding:4px 0}
+    .acc-list{grid-template-columns:1fr}
+    .acc-title{font-size:18px}
+    .acc-price{font-size:17px}
+    .acc-row summary{padding:16px 18px;gap:10px}
+    .acc-body{padding:0 18px 20px}
+    .hero-art{max-width:340px;margin:0 auto}
+    .about-card{position:static}
+    .specs-grid,.svc-grid{grid-template-columns:1fr}
+    .stats-grid{grid-template-columns:repeat(2,1fr);gap:20px}
+    .stat-divider{display:none}
+    .timeline{grid-template-columns:1fr}
+    .form-row{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:30px}
+    section{padding:70px 0}
+    .fonasa-banner{flex-direction:column;text-align:center}
+  }
+  @media (max-width:520px){
+    .foot-grid{grid-template-columns:1fr}
+    .brand-sub{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- =================== NAV =================== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <svg class="brand-mark" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+        <circle cx="30" cy="30" r="28" stroke="#84DCC6" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <path d="M30 18c-4 0-7 3-7 7 0 4 2 7 4 9-2 1-3 3-3 5 0 3 3 5 6 5s6-2 6-5c0-2-1-4-3-5 2-2 4-5 4-9 0-4-3-7-7-7Z" fill="#FFA69E"/>
+        <circle cx="30" cy="26" r="3.2" fill="#FFD166"/>
+        <circle cx="30" cy="26" r="1.4" fill="#243830"/>
+        <path d="M20 32c1-3 4-4 6-3M40 32c-1-3-4-4-6-3" stroke="#5cc2a8" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      <div class="brand-text">
+        <span class="brand-name">Karla Miranda</span>
+        <span class="brand-sub">Matrona · Consulta Online</span>
+      </div>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#especialidades">Especialidades</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#agendar">Agendar</a>
+      <a href="#agendar" class="btn btn-primary">Reservar hora</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<span id="top"></span>
+
+<!-- =================== HERO =================== -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="reveal">
+        <span class="eyebrow"><span class="dot"></span>Atendiendo online · Agenda disponible</span>
+        <h1>Salud femenina <em>humanizada</em>, basada en evidencia.</h1>
+        <p class="hero-sub">Soy <strong>Karla Miranda</strong>, matrona de la Universidad de Chile. Acompaño a mujeres y personas gestantes en cada etapa — desde la planificación familiar hasta el climaterio — con telemedicina ética, cálida y confidencial.</p>
+        <div class="hero-cta">
+          <a href="#agendar" class="btn btn-primary">Reservar consulta
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#servicios" class="btn btn-outline">Ver servicios</a>
+        </div>
+        <div class="pills">
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>U. de Chile</span>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>REG-SIS N° 886138</span>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Fonasa MLE</span>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Telemedicina</span>
+        </div>
+      </div>
+
+      <div class="hero-art reveal">
+        <!-- Stylized original botanical mark: feminine silhouette + sunflowers + leaves + supporting hand -->
+        <svg viewBox="0 0 500 500" fill="none" aria-label="Ilustración botánica de la marca Karla Miranda">
+          <!-- outer wreath circle dashed -->
+          <circle cx="250" cy="250" r="220" stroke="#c9a368" stroke-width="1.2" stroke-dasharray="2 6" fill="none"/>
+          <!-- leaf wreath -->
+          <g stroke="#c9a368" stroke-width="1.4" fill="none" opacity=".9">
+            <path d="M70 250c20-60 60-110 120-140"/>
+            <path d="M430 250c-20 60-60 110-120 140"/>
+            <!-- little leaves -->
+            <g fill="#c9a368" stroke="none">
+              <ellipse cx="92" cy="200" rx="6" ry="3" transform="rotate(-30 92 200)"/>
+              <ellipse cx="115" cy="170" rx="6" ry="3" transform="rotate(-40 115 170)"/>
+              <ellipse cx="150" cy="138" rx="6" ry="3" transform="rotate(-55 150 138)"/>
+              <ellipse cx="408" cy="300" rx="6" ry="3" transform="rotate(150 408 300)"/>
+              <ellipse cx="385" cy="335" rx="6" ry="3" transform="rotate(140 385 335)"/>
+              <ellipse cx="350" cy="365" rx="6" ry="3" transform="rotate(125 350 365)"/>
+            </g>
+          </g>
+
+          <!-- background soft leaves -->
+          <g opacity=".85">
+            <ellipse cx="190" cy="200" rx="34" ry="18" fill="#8fb89c" transform="rotate(-30 190 200)"/>
+            <ellipse cx="320" cy="200" rx="34" ry="18" fill="#a3c6ad" transform="rotate(30 320 200)"/>
+            <ellipse cx="170" cy="260" rx="26" ry="14" fill="#6fa481" transform="rotate(-15 170 260)"/>
+            <ellipse cx="340" cy="260" rx="26" ry="14" fill="#6fa481" transform="rotate(15 340 260)"/>
+            <ellipse cx="250" cy="180" rx="22" ry="12" fill="#a3c6ad" transform="rotate(90 250 180)"/>
+          </g>
+
+          <!-- berries -->
+          <g fill="#FF686B">
+            <circle cx="160" cy="225" r="4"/>
+            <circle cx="168" cy="232" r="4"/>
+            <circle cx="155" cy="237" r="4"/>
+            <circle cx="340" cy="225" r="4"/>
+            <circle cx="348" cy="232" r="4"/>
+            <circle cx="335" cy="237" r="4"/>
+            <circle cx="240" cy="335" r="4"/>
+            <circle cx="248" cy="343" r="4"/>
+            <circle cx="232" cy="343" r="4"/>
+          </g>
+
+          <!-- abstract feminine form (organic, original) -->
+          <g>
+            <!-- body teardrop -->
+            <path d="M250 200c-32 0-56 26-56 60 0 24 14 44 30 56-10 6-16 16-16 28 0 18 18 32 42 32s42-14 42-32c0-12-6-22-16-28 16-12 30-32 30-56 0-34-24-60-56-60Z"
+                  fill="#FFA69E" stroke="#FF686B" stroke-width="2"/>
+            <!-- inner shading -->
+            <path d="M250 215c-22 0-40 18-40 44 0 18 10 32 22 42" fill="none" stroke="#FF686B" stroke-width="1.5" opacity=".5"/>
+            <!-- branches inside body -->
+            <path d="M250 260v60M250 280c-8-4-14-10-16-18M250 290c8-4 14-10 16-18M250 305c-10-4-18-12-20-22M250 315c10-4 18-12 20-22"
+                  stroke="#3b6b4a" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+            <ellipse cx="234" cy="266" rx="8" ry="4" fill="#6fa481" transform="rotate(-30 234 266)"/>
+            <ellipse cx="266" cy="266" rx="8" ry="4" fill="#6fa481" transform="rotate(30 266 266)"/>
+          </g>
+
+          <!-- sunflowers -->
+          <g>
+            <!-- center sunflower -->
+            <g transform="translate(250 240)">
+              <g>
+                <ellipse cx="0" cy="-20" rx="6" ry="14" fill="#f2b432"/>
+                <ellipse cx="14" cy="-14" rx="6" ry="14" fill="#f2b432" transform="rotate(45)"/>
+                <ellipse cx="20" cy="0" rx="6" ry="14" fill="#f2b432" transform="rotate(90)"/>
+                <ellipse cx="14" cy="14" rx="6" ry="14" fill="#f2b432" transform="rotate(135)"/>
+                <ellipse cx="0" cy="20" rx="6" ry="14" fill="#f2b432" transform="rotate(180)"/>
+                <ellipse cx="-14" cy="14" rx="6" ry="14" fill="#f2b432" transform="rotate(225)"/>
+                <ellipse cx="-20" cy="0" rx="6" ry="14" fill="#f2b432" transform="rotate(270)"/>
+                <ellipse cx="-14" cy="-14" rx="6" ry="14" fill="#f2b432" transform="rotate(315)"/>
+              </g>
+              <circle r="11" fill="#7a4a1a"/>
+              <circle r="7" fill="#5a3410"/>
+            </g>
+            <!-- left sunflower -->
+            <g transform="translate(160 290) scale(.7)">
+              <g>
+                <ellipse cx="0" cy="-20" rx="6" ry="14" fill="#f2b432"/>
+                <ellipse cx="14" cy="-14" rx="6" ry="14" fill="#f2b432" transform="rotate(45)"/>
+                <ellipse cx="20" cy="0" rx="6" ry="14" fill="#f2b432" transform="rotate(90)"/>
+                <ellipse cx="14" cy="14" rx="6" ry="14" fill="#f2b432" transform="rotate(135)"/>
+                <ellipse cx="0" cy="20" rx="6" ry="14" fill="#f2b432" transform="rotate(180)"/>
+                <ellipse cx="-14" cy="14" rx="6" ry="14" fill="#f2b432" transform="rotate(225)"/>
+                <ellipse cx="-20" cy="0" rx="6" ry="14" fill="#f2b432" transform="rotate(270)"/>
+                <ellipse cx="-14" cy="-14" rx="6" ry="14" fill="#f2b432" transform="rotate(315)"/>
+              </g>
+              <circle r="11" fill="#7a4a1a"/>
+              <circle r="6" fill="#5a3410"/>
+            </g>
+            <!-- right sunflower -->
+            <g transform="translate(340 290) scale(.7)">
+              <g>
+                <ellipse cx="0" cy="-20" rx="6" ry="14" fill="#f2b432"/>
+                <ellipse cx="14" cy="-14" rx="6" ry="14" fill="#f2b432" transform="rotate(45)"/>
+                <ellipse cx="20" cy="0" rx="6" ry="14" fill="#f2b432" transform="rotate(90)"/>
+                <ellipse cx="14" cy="14" rx="6" ry="14" fill="#f2b432" transform="rotate(135)"/>
+                <ellipse cx="0" cy="20" rx="6" ry="14" fill="#f2b432" transform="rotate(180)"/>
+                <ellipse cx="-14" cy="14" rx="6" ry="14" fill="#f2b432" transform="rotate(225)"/>
+                <ellipse cx="-20" cy="0" rx="6" ry="14" fill="#f2b432" transform="rotate(270)"/>
+                <ellipse cx="-14" cy="-14" rx="6" ry="14" fill="#f2b432" transform="rotate(315)"/>
+              </g>
+              <circle r="11" fill="#7a4a1a"/>
+              <circle r="6" fill="#5a3410"/>
+            </g>
+          </g>
+
+          <!-- open hand below -->
+          <g>
+            <path d="M150 395c20-14 50-22 80-22h40c30 0 60 8 80 22-10 8-26 14-44 14H194c-18 0-34-6-44-14Z"
+                  fill="#fef1e6" stroke="#c9a368" stroke-width="1.6"/>
+            <path d="M170 395c20-6 40-8 80-8s60 2 80 8" stroke="#c9a368" stroke-width="1" fill="none" opacity=".6"/>
+            <!-- fingers hint -->
+            <path d="M180 390c-4-6-2-12 2-14M210 384c-2-8 0-14 4-16M250 382c0-8 2-14 6-16M290 384c2-8 6-12 10-14M320 390c4-6 8-10 12-10"
+                  stroke="#c9a368" stroke-width="1.2" stroke-linecap="round" fill="none" opacity=".5"/>
+          </g>
+
+          <!-- text -->
+          <text x="250" y="445" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="28" font-weight="600" fill="#7a2e2e" letter-spacing="3">KARLA MIRANDA</text>
+          <text x="250" y="465" text-anchor="middle" font-family="'Nunito', sans-serif" font-size="9" font-weight="600" fill="#7a4a1a" letter-spacing="3">MATRONA &#183; SERVICIOS DE CONSULTA</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- =================== STATS =================== -->
+<section class="stats" style="padding:38px 0">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="label">Formación</div>
+        <div class="value">Universidad de Chile</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="label">Registro</div>
+        <div class="value">REG-SIS N° 886138</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="label">Cobertura</div>
+        <div class="value">Fonasa MLE habilitada</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="label">Modalidad</div>
+        <div class="value">Atención 100% Online</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== SOBRE MI =================== -->
+<section class="about" id="sobre-mi">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Sobre mí</span>
+      <h2>Una matrona dedicada a tu <em>bienestar integral</em>.</h2>
+      <p>Atención humanizada y basada en la evidencia, con sólida formación clínica y compromiso ético.</p>
+    </div>
+
+    <div class="about-grid">
+      <aside class="about-card reveal">
+        <div class="avatar">
+          <span class="avatar-initials">KM</span>
+          <span class="avatar-label">[ FOTO PROFESIONAL · 1:1 ]</span>
+        </div>
+        <h3>Karla Miranda Miranda</h3>
+        <div class="role">Matrona · Universidad de Chile</div>
+        <a class="contact-row wa-link" href="https://wa.me/56995056185" target="_blank" rel="noopener" style="text-decoration:none"><svg viewBox="0 0 24 24" fill="currentColor" style="color:#25D366"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg> Escríbeme por WhatsApp</a>
+        <div class="contact-row"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2Z M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2"/></svg> karlamiranda@ug.uchile.cl</div>
+        <div class="contact-row"><svg viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="2"/></svg> Santiago, Chile</div>
+        <div class="contact-row"><svg viewBox="0 0 24 24" fill="none"><path d="M12 8v4l3 2 M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke="currentColor" stroke-width="2"/></svg> Lun a Sáb · 18:00 – 21:00 hrs</div>
+        <div class="badges">
+          <span class="badge">Diplomado Sexualidad</span>
+          <span class="badge">LARC Certificada</span>
+          <span class="badge warm">Fonasa MLE</span>
+        </div>
+      </aside>
+
+      <div class="about-body reveal">
+        <h3>Vocación por el servicio público y los derechos en salud sexual.</h3>
+        <p>Matrona con sólida formación clínica en neonatología, atención primaria y servicios gineco-obstétricos. Compromiso ético, atención humanizada y siempre basada en la evidencia más actual.</p>
+        <p>Actualmente trabaja en el programa <strong>PRAPS PAP del CESFAM Dr. Albertz</strong> en Cerro Navia, realizando tamizaje Papanicolaou y HPV según normativa MINSAL. Su Diplomado en Sexualidad para profesionales (Mauleduc, 2025) le permite un abordaje premium en salud sexual integral.</p>
+
+        <div class="about-tabs" role="tablist">
+          <button class="tab active" data-tab="form">Formación</button>
+          <button class="tab" data-tab="exp">Experiencia</button>
+          <button class="tab" data-tab="cert">Certificaciones</button>
+        </div>
+
+        <div class="timeline" id="tab-form">
+          <div class="tline"><div class="year">2025</div><div class="title">Matrona</div><div class="place">Universidad de Chile</div></div>
+          <div class="tline"><div class="year">2024</div><div class="title">Lic. Obstetricia y Puericultura</div><div class="place">Universidad de Chile</div></div>
+          <div class="tline"><div class="year">2025</div><div class="title">Diplomado en Sexualidad</div><div class="place">Profesionales de la Matronería — Mauleduc</div></div>
+          <div class="tline"><div class="year">Actual</div><div class="title">Formación continua</div><div class="place">Salud sexual integral</div></div>
+        </div>
+
+        <div class="timeline" id="tab-exp" style="display:none">
+          <div class="tline"><div class="year">06/2025 — Hoy</div><div class="title">Matrona PRAPS PAP</div><div class="place">CESFAM Dr. Albertz · Cerro Navia</div></div>
+          <div class="tline"><div class="year">05–06/2025</div><div class="title">Espacio Amigable Adolescente</div><div class="place">CESFAM Pudahuel Estrella</div></div>
+          <div class="tline"><div class="year">2024</div><div class="title">Internado Neonatología</div><div class="place">UTI Neonatal · Hospital San José</div></div>
+          <div class="tline"><div class="year">2022–2024</div><div class="title">Internado Gineco-Obstetricia</div><div class="place">Hospital Clínico San Borja Arriarán</div></div>
+        </div>
+
+        <div class="timeline" id="tab-cert" style="display:none">
+          <div class="tline"><div class="year">LARC</div><div class="title">Implanon NXT, Jadelle, Levoplant</div><div class="place">Inserción certificada</div></div>
+          <div class="tline"><div class="year">DIU</div><div class="title">Inserción DIU Andalan</div><div class="place">Anticoncepción de larga duración</div></div>
+          <div class="tline"><div class="year">2025</div><div class="title">Reanimación Neonatal</div><div class="place">CEFAV</div></div>
+          <div class="tline"><div class="year">2025</div><div class="title">Soporte Vital Cardiopulmonar</div><div class="place">Avanzado</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== ESPECIALIDADES =================== -->
+<section id="especialidades" class="especialidades-compact">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Especialidades</span>
+      <h2>Cuidado integral en <em>cada etapa</em> de tu vida.</h2>
+      <p>Seis áreas de atención respaldadas por formación universitaria y certificaciones vigentes.</p>
+    </div>
+
+    <div class="specs-compact">
+      <div class="spec-c reveal">
+        <div class="spec-c-icon aqua"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M8 12a4 4 0 0 1 8 0 4 4 0 0 1-8 0Z" stroke="currentColor" stroke-width="1.8"/></svg></div>
+        <div class="spec-c-body">
+          <h4>Planificación Familiar</h4>
+          <p>Anticoncepción oral, inyectable y métodos LARC.</p>
+          <div class="spec-tags"><span class="spec-tag">Implanon</span><span class="spec-tag">Jadelle</span><span class="spec-tag">DIU</span></div>
+        </div>
+      </div>
+      <div class="spec-c reveal">
+        <div class="spec-c-icon blush"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-7-11a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 6.5-7 11-7 11Z" stroke="currentColor" stroke-width="1.8"/></svg></div>
+        <div class="spec-c-body">
+          <h4>Salud Sexual Integral</h4>
+          <p>Consejería con abordaje premium y diplomado.</p>
+          <div class="spec-tags"><span class="spec-tag">Consejería</span><span class="spec-tag">Diplomado</span></div>
+        </div>
+      </div>
+      <div class="spec-c reveal">
+        <div class="spec-c-icon aqua"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4c-3 0-5 2-5 5 0 4 5 9 5 9s5-5 5-9c0-3-2-5-5-5Z" stroke="currentColor" stroke-width="1.8"/></svg></div>
+        <div class="spec-c-body">
+          <h4>Salud Materna & Lactancia</h4>
+          <p>Control prenatal y asesoría extendida.</p>
+          <div class="spec-tags"><span class="spec-tag">Prenatal</span><span class="spec-tag">Lactancia</span></div>
+        </div>
+      </div>
+      <div class="spec-c reveal">
+        <div class="spec-c-icon blush"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M3 9h18M8 14h4" stroke="currentColor" stroke-width="1.8"/></svg></div>
+        <div class="spec-c-body">
+          <h4>PAP & Tamizaje HPV</h4>
+          <p>Interpretación y prevención según MINSAL.</p>
+          <div class="spec-tags"><span class="spec-tag">PRAPS PAP</span><span class="spec-tag">MINSAL</span></div>
+        </div>
+      </div>
+      <div class="spec-c reveal">
+        <div class="spec-c-icon aqua"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13a7 7 0 0 1 14 0v4a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-4Z" stroke="currentColor" stroke-width="1.8"/></svg></div>
+        <div class="spec-c-body">
+          <h4>Atención Neonatal</h4>
+          <p>Cuidados del recién nacido y signos de alarma.</p>
+          <div class="spec-tags"><span class="spec-tag">RCP Neonatal</span><span class="spec-tag">UTI</span></div>
+        </div>
+      </div>
+      <div class="spec-c reveal">
+        <div class="spec-c-icon blush"><svg viewBox="0 0 24 24" fill="none"><path d="M4 18c2-2 4-3 8-3s6 1 8 3M12 4v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div class="spec-c-body">
+          <h4>Climaterio & Menopausia</h4>
+          <p>Acompañamiento hormonal y manejo de síntomas.</p>
+          <div class="spec-tags"><span class="spec-tag">Hormonal</span><span class="spec-tag">Bienestar</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== SERVICIOS =================== -->
+<section class="servicios" id="servicios">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Servicios y precios</span>
+      <h2>Atención online <em>transparente</em> y accesible.</h2>
+      <p>Todos los servicios son por telemedicina e incluyen consejería, educación, seguimiento y gestión administrativa.</p>
+    </div>
+
+    <div class="svc-accordion reveal">
+      <details class="acc-row">
+        <summary>
+          <div class="acc-title">Consulta General / Preventiva</div>
+          <div class="acc-meta">
+            <span class="acc-price">$12.000 – $25.000</span>
+            <span class="acc-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+        </summary>
+        <div class="acc-body">
+          <p class="acc-desc">Evaluación clínica integral, anamnesis y plan de cuidado personalizado.</p>
+          <ul class="acc-list">
+            <li>Anamnesis y evaluación de antecedentes</li>
+            <li>Plan personalizado y receta digital</li>
+            <li>Seguimiento por WhatsApp 7 días</li>
+          </ul>
+          <div class="acc-foot"><span class="acc-tag">Fonasa MLE ~ $5.200</span><span class="acc-refund">Reembolso vía Fonasa nivel 3 e Isapres.</span><a href="#agendar" class="btn btn-ghost">Agendar</a></div>
+        </div>
+      </details>
+
+      <details class="acc-row featured" open>
+        <summary>
+          <div class="acc-title">Consejería en Salud Sexual <span class="acc-badge">Más solicitado</span></div>
+          <div class="acc-meta">
+            <span class="acc-price">$35.000 – $45.000</span>
+            <span class="acc-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+        </summary>
+        <div class="acc-body">
+          <p class="acc-desc">Sesión extendida con abordaje premium del diplomado especializado.</p>
+          <ul class="acc-list">
+            <li>Espacio confidencial y libre de juicio</li>
+            <li>Educación basada en evidencia</li>
+            <li>Material y seguimiento posterior</li>
+          </ul>
+          <div class="acc-foot"><span class="acc-tag">Sesión 45–60 min · Diplomado</span><span class="acc-refund">Servicio especializado · sin cobertura Fonasa directa.</span><a href="#agendar" class="btn btn-primary">Agendar consejería</a></div>
+        </div>
+      </details>
+
+      <details class="acc-row">
+        <summary>
+          <div class="acc-title">Anticoncepción & LARC</div>
+          <div class="acc-meta">
+            <span class="acc-price">$12.000 – $19.990</span>
+            <span class="acc-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+        </summary>
+        <div class="acc-body">
+          <p class="acc-desc">Asesoría completa para elegir el método más adecuado para ti.</p>
+          <ul class="acc-list">
+            <li>Evaluación de criterios de elegibilidad</li>
+            <li>Receta electrónica válida en farmacias</li>
+            <li>Indicación para LARC en red presencial</li>
+          </ul>
+          <div class="acc-foot"><span class="acc-tag">Incluye receta electrónica</span><span class="acc-refund">Cobertura parcial Fonasa MLE en consulta base.</span><a href="#agendar" class="btn btn-ghost">Agendar</a></div>
+        </div>
+      </details>
+
+      <details class="acc-row">
+        <summary>
+          <div class="acc-title">Asesoría de Lactancia</div>
+          <div class="acc-meta">
+            <span class="acc-price">$35.000 – $37.000</span>
+            <span class="acc-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+        </summary>
+        <div class="acc-body">
+          <p class="acc-desc">Sesión extendida para resolver dudas y dificultades de lactancia materna.</p>
+          <ul class="acc-list">
+            <li>Evaluación de técnica y agarre</li>
+            <li>Plan de manejo paso a paso</li>
+            <li>Acompañamiento 14 días post-sesión</li>
+          </ul>
+          <div class="acc-foot"><span class="acc-tag">Sesión extendida · 60 min</span><span class="acc-refund">Boleta de honorarios para reembolso Isapre.</span><a href="#agendar" class="btn btn-ghost">Agendar</a></div>
+        </div>
+      </details>
+
+      <details class="acc-row">
+        <summary>
+          <div class="acc-title">Interpretación PAP / HPV</div>
+          <div class="acc-meta">
+            <span class="acc-price">$5.000 – $15.000</span>
+            <span class="acc-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+        </summary>
+        <div class="acc-body">
+          <p class="acc-desc">Lectura clara de tus resultados y plan según normativa MINSAL.</p>
+          <ul class="acc-list">
+            <li>Explicación en lenguaje claro</li>
+            <li>Conducta y derivación si corresponde</li>
+            <li>Informe escrito digital</li>
+          </ul>
+          <div class="acc-foot"><span class="acc-tag">También como add-on</span><span class="acc-refund">Add-on disponible al agendar otra consulta.</span><a href="#agendar" class="btn btn-ghost">Agendar</a></div>
+        </div>
+      </details>
+
+      <details class="acc-row">
+        <summary>
+          <div class="acc-title">Control Prenatal Online</div>
+          <div class="acc-meta">
+            <span class="acc-price">$15.000 – $25.000</span>
+            <span class="acc-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+        </summary>
+        <div class="acc-body">
+          <p class="acc-desc">Seguimiento del embarazo con licencias maternales electrónicas.</p>
+          <ul class="acc-list">
+            <li>Revisión de exámenes y ecografías</li>
+            <li>Licencias maternales electrónicas</li>
+            <li>Plan de parto y educación prenatal</li>
+          </ul>
+          <div class="acc-foot"><span class="acc-tag">Licencias electrónicas</span><span class="acc-refund">Copago Fonasa nivel 3 ~ $5.200 – $5.600.</span><a href="#agendar" class="btn btn-ghost">Agendar</a></div>
+        </div>
+      </details>
+    </div>
+
+    <div class="fonasa-banner reveal">
+      <div class="icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4Z" stroke="currentColor" stroke-width="1.8"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div>
+        <h4>Cobertura Fonasa MLE e Isapres</h4>
+        <p>Profesional habilitada en Modalidad Libre Elección Fonasa (Nivel 3) y reembolso vía Isapres. Recibirás siempre boleta electrónica para tu trámite.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== AGENDAR =================== -->
+<section class="agendar" id="agendar">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Agendar cita</span>
+      <h2>Reserva tu hora en <em>3 pasos</em>.</h2>
+      <p>El proceso es 100% online, seguro y confidencial. Recibirás confirmación y enlace de videollamada por correo.</p>
+    </div>
+
+    <div class="steps-h reveal">
+      <div class="step-h">
+        <div class="step-h-num">1</div>
+        <h4>Elige tu servicio</h4>
+        <p>Selecciona la consulta que necesitas.</p>
+      </div>
+      <div class="step-arrow" aria-hidden="true"><svg viewBox="0 0 80 24" fill="none"><path d="M2 12h70M62 4l10 8-10 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step-h">
+        <div class="step-h-num">2</div>
+        <h4>Selecciona tu fecha</h4>
+        <p>Escoge día y hora desde el calendario.</p>
+      </div>
+      <div class="step-arrow" aria-hidden="true"><svg viewBox="0 0 80 24" fill="none"><path d="M2 12h70M62 4l10 8-10 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="step-h">
+        <div class="step-h-num">3</div>
+        <h4>Confirma tu reserva</h4>
+        <p>Recibirás el enlace por correo.</p>
+      </div>
+    </div>
+
+    <div class="agendar-single">
+      <div class="calendly-wrap reveal">
+        <!-- Real embed (replace the data-url with the calendly username) -->
+        <div class="calendly-inline-widget" data-url="https://calendly.com/TU_USUARIO" style="min-width:320px;height:620px;display:none"></div>
+        <!-- Visual placeholder shown until Calendly URL is configured -->
+        <div class="calendly-fallback">
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" style="margin-bottom:14px"><rect x="3" y="5" width="18" height="16" rx="2" stroke="#84DCC6" stroke-width="1.8"/><path d="M3 9h18M8 3v4M16 3v4" stroke="#84DCC6" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="14" r="2" fill="#FF686B"/></svg>
+          <h4>Calendario Calendly</h4>
+          <p>Aquí se mostrará la grilla de horarios disponibles una vez configurado tu Calendly.</p>
+          <code>data-url="https://calendly.com/<b>TU_USUARIO</b>"</code>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FOOTER =================== -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="brand">
+          <svg class="brand-mark" viewBox="0 0 60 60" fill="none" aria-hidden="true">
+            <circle cx="30" cy="30" r="28" stroke="#84DCC6" stroke-width="1.2" stroke-dasharray="3 3"/>
+            <path d="M30 18c-4 0-7 3-7 7 0 4 2 7 4 9-2 1-3 3-3 5 0 3 3 5 6 5s6-2 6-5c0-2-1-4-3-5 2-2 4-5 4-9 0-4-3-7-7-7Z" fill="#FFA69E"/>
+            <circle cx="30" cy="26" r="3.2" fill="#FFD166"/>
+          </svg>
+          <div class="brand-text">
+            <span class="brand-name">Karla Miranda</span>
+            <span class="brand-sub">Matrona · Consulta Online</span>
+          </div>
+        </div>
+        <p>Salud femenina humanizada y basada en la evidencia. Atención 100% online por telemedicina, desde Santiago a todo Chile.</p>
+      </div>
+      <div>
+        <h5>Servicios</h5>
+        <ul>
+          <li><a href="#servicios">Consulta General</a></li>
+          <li><a href="#servicios">Consejería Sexual</a></li>
+          <li><a href="#servicios">Anticoncepción & LARC</a></li>
+          <li><a href="#servicios">Lactancia</a></li>
+          <li><a href="#servicios">Control Prenatal</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Navegación</h5>
+        <ul>
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#especialidades">Especialidades</a></li>
+          <li><a href="#agendar">Agendar hora</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contacto directo</h5>
+        <ul>
+          <li><a href="https://wa.me/56995056185" target="_blank" rel="noopener" class="foot-wa"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg> Escríbeme por WhatsApp</a></li>
+          <li><a href="mailto:karlamiranda@ug.uchile.cl">karlamiranda@ug.uchile.cl</a></li>
+          <li>Santiago, Chile</li>
+          <li>Lun a Sáb · 18:00 – 21:00 hrs</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 Karla Miranda Miranda · Matrona U. de Chile · Todos los derechos reservados.</span>
+      <span class="reg-badge">REG-SIS N° 886138 · Fonasa MLE</span>
+    </div>
+  </div>
+</footer>
+
+<!-- =================== JS =================== -->
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+  // Mobile nav
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  // Tabs in About
+  const tabs = document.querySelectorAll('.tab');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    document.querySelectorAll('#tab-form, #tab-exp, #tab-cert').forEach(p => p.style.display = 'none');
+    document.getElementById('tab-' + t.dataset.tab).style.display = 'grid';
+  }));
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }});
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Contact form (static) - removed (section deleted)
+
+  // Show Calendly real widget only when user has set a real username
+  const cw = document.querySelector('.calendly-inline-widget');
+  const fb = document.querySelector('.calendly-fallback');
+  if (cw && !cw.dataset.url.includes('TU_USUARIO')) {
+    cw.style.display = 'block';
+    fb.style.display = 'none';
+  }
+</script>
+</body>
+</html>
